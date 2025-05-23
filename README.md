@@ -120,3 +120,13 @@ src/
 ├── environments/      # Environment configurations
 └── styles.css        # Global styles
 ```
+
+## Deployment :
+
+- Build frontend (Angular) → generates dist/
+- Upload files to S3 bucket (private)
+- CloudFront pulls from S3 → caches at edge locations
+- Invalidate CloudFront cache post-deploy
+- Route 53 maps domain to CloudFront
+- Users access app securely via HTTPS and custom domain
+  The emtire flow will be automated through github continuous workflow and gulp lib.
