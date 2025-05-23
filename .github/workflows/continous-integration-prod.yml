@@ -1,0 +1,52 @@
+name: prod
+
+on: 
+  push:
+    branches: 
+      - master_v2
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+          persist-credentials: false
+
+      - run: echo ${GITHUB_REF}
+      - run: sed -i -e 's/__DEPLOYED_TAG__DO_NOT_MODIFY/'`echo ${GITHUB_REF##*/}`'/g' config.json
+      - run: sed -i -e 's/__DEPLOYED_ON__DO_NOT_MODIFY/'`date -u +"%Y-%m-%d_%T"`'/g' config.json
+      - run: sed -i -e 's/__ENV__DO_NOT_MODIFY/Production/g' config.json
+      - run: sed -i -e 's/__DEPLOYED_REPO__DO_NOT_MODIFY/'`echo ${GITHUB_REPOSITORY##*/}`'/g' config.json
+      
+      - name: Install AWS CLI
+        run: pip install awscli
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+              aws-access-key-id: ${{ secrets.AWS_PROD_FRONTEND_KEY }}
+              aws-secret-access-key: ${{ secrets.AWS_PROD_FRONTEND_SCERET }}
+              aws-region: ap-southeast-1
+
+      - run: mytags="";for i in $(jq -r '.tags | keys[]' ./config.json);do value=$(jq --arg j "$i" '.tags[$j]' config.json);mytags=$mytags"{Key=$i,Value=$value},";aws s3api put-bucket-tagging --bucket $(jq -r .prod.bucket config.json) --tagging "TagSet=[$mytags]";done;
+      - run: mytags="";for i in $(jq -r '.tags | keys[]' config.json);do value=$(jq --arg j "$i" '.tags[$j]' config.json);mytags=$mytags"{Key=$i,Value=$value},";aws cloudfront tag-resource --resource $(jq -r .prod.arn config.json) --tags Items="[$mytags]";done;
+      - run: rm -rf node_modules/
+      - run: rm -rf package-lock.json
+  
+      # - uses: webfactory/ssh-agent@v0.4.1
+      #   with:
+      #       ssh-private-key: ${{ secrets.FRONTEND_SSH_KEY }} 
+
+      - name: Prepare Node Environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.16.0'
+       
+      - run: git config --global url."https://${{ secrets.CICD_KEY }}@github.com/".insteadOf ssh://git@github.com/ 
+      - run: npm cache clean --force
+      - run: npm install
+      - run: npm run build-deploy --env=prod
+      - run: aws cloudfront create-invalidation --distribution-id $(echo "$(jq -r .prod.arn config.json)" | awk -F'/' '{print $NF}') --paths "/*"

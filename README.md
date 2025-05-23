@@ -1,27 +1,51 @@
+# Frontend
+
+A modern Angular-based frontend application for document management and user administration.
+
 ## Features
 
-- User authentication and authorization
-- Document upload and management
-- Role-based access control
-- Document versioning
-- Document search and filtering
-- User management (admin only)
-- Document ingestion tracking
+- **User Authentication & Authorization**  
+  Secure login and access control using token-based authentication.
+
+- **Document Upload & Management**  
+  Upload, view, edit, and manage documents with ease.
+
+- **Role-Based Access Control**  
+  Manage access and permissions based on user roles.
+
+- **Document Versioning**  
+  Maintain and track multiple versions of a document.
+
+- **Advanced Document Search & Filtering**  
+  Quickly locate documents with dynamic search and filter options.
+
+- **Admin User Management**  
+  Admin-exclusive functionality to manage system users.
+
+- **Ingestion Tracking**  
+  Monitor document ingestion status and history.
+
+---
 
 ## Prerequisites
 
-- Node.js (v18 or later)
-- npm (v9 or later)
-- Angular CLI (v17 or later)
+Ensure the following are installed on your system:
+
+- [Node.js](https://nodejs.org/) (v18 or later)
+- [npm](https://www.npmjs.com/) (v9 or later)
+- [Angular CLI](https://angular.io/cli) (v17 or later)
+
+---
 
 ## Installation
 
-1. Clone the repository:
+1. **Clone the repository:**
 
-```bash
-git clone https://github.com/your-username/jk-tech-frontend.git
-cd jk-tech-frontend
-```
+   ```bash
+   git clone https://github.com/2017PGCACA01/frontend_user_doc_ing.git
+   cd frontend_user_doc_ing
+
+   ```
 
 2. Install dependencies:
 
@@ -64,7 +88,7 @@ This will launch the Karma test runner and execute all Jasmine test cases. You c
 To generate a code coverage report, run:
 
 ```bash
-ng test --code-coverage
+npx ng test --no-watch  --code-coverage
 ```
 
 The coverage report will be available in the `coverage/` directory.
@@ -96,15 +120,3 @@ src/
 ├── environments/      # Environment configurations
 └── styles.css        # Global styles
 ```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.

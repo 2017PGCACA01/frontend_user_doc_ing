@@ -6,7 +6,11 @@
       "start": "ng serve",
       "build": "ng build",
       "watch": "ng build --watch --configuration development",
-      "test": "ng test"
+      "test": "ng test",
+      "updatePackage": "gulp --gulpfile buildScripts/npmBumpVersions.js --type $npm_config_type --env $npm_config_env",
+      "deploy": "gulp --gulpfile buildScripts/s3-upload.js --env $npm_config_env",
+      "aotfalsebuild": "ng build -$npm_config_env --aot=false",
+      "build-deploy": "npm-run-all aotfalsebuild deploy"
     },
     "private": true,
     "dependencies": {

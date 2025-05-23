@@ -1,21 +1,5 @@
-# Ignore everything
-/*
 
-# But not these files/folders!
-!.gitignore
-!src/
-!angular.json
-!package.json
-!package-lock.json
-!tsconfig.json
-!tsconfig.app.json
-!tsconfig.spec.json
-!karma.conf.js
-!README.md
-!Dockerfile
-!.dockerignore
-!docker-compose.yml
-!e2e/
 coverage/
 dist/
 node_modules/
+.angular/
