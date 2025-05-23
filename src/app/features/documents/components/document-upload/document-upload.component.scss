@@ -1,0 +1,42 @@
+.upload-container {
+    padding: 20px;
+  }
+  
+  mat-card {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  .file-upload {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+  
+  .upload-progress {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  

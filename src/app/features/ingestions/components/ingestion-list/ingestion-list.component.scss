@@ -1,0 +1,43 @@
+.ingestion-list-container {
+    padding: 20px;
+  }
+  
+  mat-card {
+    margin-bottom: 20px;
+  }
+  
+  .header-actions {
+    margin-left: auto;
+  }
+  
+  mat-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  .mat-column-actions {
+    width: 80px;
+    text-align: center;
+  }
+  
+  .status-pending {
+    color: #f57c00;
+  }
+  
+  .status-processing {
+    color: #1976d2;
+  }
+  
+  .status-completed {
+    color: #388e3c;
+  }
+  
+  .status-failed {
+    color: #d32f2f;
+  }
+  

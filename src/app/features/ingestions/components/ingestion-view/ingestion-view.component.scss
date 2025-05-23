@@ -1,0 +1,84 @@
+.view-container {
+    padding: 20px;
+  }
+  
+  mat-card {
+    margin-bottom: 20px;
+  }
+  
+  .header-actions {
+    margin-left: auto;
+  }
+  
+  mat-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .ingestion-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .detail-row {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .label {
+    font-weight: 500;
+    min-width: 120px;
+  }
+  
+  .value {
+    color: #666;
+  }
+  
+  .status-pending {
+    color: #f57c00;
+  }
+  
+  .status-processing {
+    color: #1976d2;
+  }
+  
+  .status-completed {
+    color: #388e3c;
+  }
+  
+  .status-failed {
+    color: #d32f2f;
+  }
+  
+  .progress-section {
+    margin-top: 20px;
+  }
+  
+  .progress-text {
+    margin-top: 8px;
+    color: #666;
+  }
+  
+  .error-section {
+    margin-top: 20px;
+    padding: 16px;
+    background-color: #ffebee;
+    border-radius: 4px;
+  }
+  
+  .error-message {
+    color: #d32f2f;
+    margin: 8px 0 0;
+  }
+  
+  .documents-section {
+    margin-top: 20px;
+  }
+  
+  table {
+    width: 100%;
+    margin-top: 16px;
+  }
+  

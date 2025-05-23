@@ -1,0 +1,50 @@
+<div class="view-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Ingestion Details</mat-card-title>
+        <div class="header-actions">
+          <button mat-button routerLink="/ingestions">
+            <mat-icon>arrow_back</mat-icon>
+            Back to List
+          </button>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="ingestion" class="ingestion-details">
+          <div class="detail-row">
+            <span class="label">Ingestion ID:</span>
+            <span class="value">{{ ingestion.id }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Document ID:</span>
+            <span class="value">{{ ingestion.document_id }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Status:</span>
+            <span class="value" [class]="'status-' + ingestion.status.toLowerCase()">
+              {{ ingestion.status }}
+            </span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Started At:</span>
+            <span class="value">{{ ingestion.started_at | date: 'medium' }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Completed At:</span>
+            <span class="value">
+              {{ ingestion.completed_at ? (ingestion.completed_at | date: 'medium') : '-' }}
+            </span>
+          </div>
+          <div class="detail-row">
+            <span class="label">Summary:</span>
+            <span class="value">{{ ingestion.summary }}</span>
+          </div>
+          <div *ngIf="ingestion.error_message" class="error-section">
+            <h3>Error Details</h3>
+            <p class="error-message">{{ ingestion.error_message }}</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

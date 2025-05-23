@@ -1,0 +1,35 @@
+<div class="create-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Trigger Ingestion</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Select a Document</mat-label>
+            <mat-select formControlName="documentId" required>
+              <mat-option *ngFor="let doc of documents" [value]="doc.id">
+                {{ doc.title }} ({{ doc.filename }})
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="createForm.get('documentId')?.hasError('required')">
+              Please select a document
+            </mat-error>
+          </mat-form-field>
+  
+          <div class="form-actions">
+            <button mat-button type="button" routerLink="/ingestions">Cancel</button>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="createForm.invalid || isSubmitting"
+            >
+              Trigger Ingestion
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
