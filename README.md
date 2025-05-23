@@ -129,4 +129,7 @@ src/
 - Invalidate CloudFront cache post-deploy
 - Route 53 maps domain to CloudFront
 - Users access app securely via HTTPS and custom domain
-  The emtire flow will be automated through github continuous workflow and gulp lib.
+
+```
+The entire flow will be automated through github continuous workflow and gulp lib.
+```
