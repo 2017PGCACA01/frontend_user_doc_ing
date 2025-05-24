@@ -34,7 +34,6 @@ import { IngestionsModule } from "./features/ingestions/ingestions.module";
     DocumentsModule,
     UsersModule,
     IngestionsModule,
-    // Angular Material Modules
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
