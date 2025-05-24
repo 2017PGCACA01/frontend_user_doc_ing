@@ -32,7 +32,7 @@ export class IngestionListComponent implements OnInit {
         this.ingestions = ingestions;
       },
       error: (error) => {
-        console.error("Error loading ingestions:", error);
+        console.error("Error loading ingestions : ", error);
       },
     });
   }
