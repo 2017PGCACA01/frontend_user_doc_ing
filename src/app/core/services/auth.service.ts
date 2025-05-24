@@ -35,7 +35,6 @@ export class AuthService {
       .pipe(
         tap({
           next: (response) => {
-            console.log("Login API response:", response);
             localStorage.setItem("token", response.access_token);
             console.log("Token stored:", localStorage.getItem("token"));
             this.loadCurrentUser();
