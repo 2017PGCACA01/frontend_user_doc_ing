@@ -27,7 +27,6 @@ export class DocumentService {
     data: Partial<Document>,
     file?: File | null
   ): Observable<Document> {
-    // Split file from metadata
     const { title, description, file_type } = data;
     const metadata: any = { title, description, file_type };
     return this.apiService.putFile(`/api/docs/${id}`, file || null, metadata);
